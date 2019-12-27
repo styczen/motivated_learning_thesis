@@ -1,0 +1,10 @@
+# LaTeX files
+praca.pdf
+praca-blx.bib
+*.aux
+praca.bbl
+praca.blg
+praca.run.xml
+praca.synctex.gz
+praca.toc
+praca.log
