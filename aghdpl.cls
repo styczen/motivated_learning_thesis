@@ -123,7 +123,7 @@ Supervisor: & {\itshape \@supervisor}\\
 
 \vspace*{17mm}
 
-\centerline{\small\sffamily Krak\'{o}w, \@date}
+\centerline{\small\sffamily Krak\'{o}w, \the\year}
 
 \clearpage 
 \thispagestyle{empty} 

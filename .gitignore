@@ -8,3 +8,9 @@ praca.run.xml
 praca.synctex.gz
 praca.toc
 praca.log
+praca.fls
+praca.out
+praca.fdb_latexmk
+
+# Visual Studio Code settings directory
+.vscode/

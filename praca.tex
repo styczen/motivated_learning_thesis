@@ -1,4 +1,4 @@
-\documentclass[11pt]{aghdpl}
+\documentclass[12pt]{aghdpl}
 % \documentclass[en,11pt]{aghdpl}  % praca w języku angielskim
 
 % Lista wszystkich języków stanowiących języki pozycji bibliograficznych użytych w pracy.
@@ -16,6 +16,16 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amsthm}
+
+% --- < hiperlacza > ---
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
 
 % --- < bibliografia > ---
 
@@ -105,31 +115,32 @@ backend=bibtex
 
 %---------------------------------------------------------------------------
 
-\author{Marcin Szpyrka}
-\shortauthor{M. Szpyrka}
+\author{Bartłomiej Styczeń}
+\shortauthor{B. Styczeń}
 
 %\titlePL{Przygotowanie bardzo długiej i pasjonującej pracy dyplomowej w~systemie~\LaTeX}
 %\titleEN{Preparation of a very long and fascinating bachelor or master thesis in \LaTeX}
 
-\titlePL{Przygotowanie pracy dyplomowej w~systemie~\LaTeX}
-\titleEN{Thesis in \LaTeX}
+\titlePL{Kognitywny system eksploracji środowiska przez inteligentnego agenta z wykorzystaniem uczenia motywowanego.
+}
+\titleEN{Cognitive system of environment exploration by an intelligent agent using motivated learning}
 
 
-\shorttitlePL{Przygotowanie pracy dyplomowej w~systemie \LaTeX} % skrócona wersja tytułu jeśli jest bardzo długi
-\shorttitleEN{Preparation of a long and fascinating thesis in \LaTeX}
+\shorttitlePL{Kognitywny system ekspolarcji środowiska z wykorzystaniem uczenia motywowanego} % skrócona wersja tytułu jeśli jest bardzo długi
+\shorttitleEN{Cognitive system of environment exploration using motivated learning}
 
 \thesistype{Praca dyplomowa magisterska}
 %\thesistype{Master of Science Thesis}
 
-\supervisor{prof. dr hab. Marcin Szpyrka}
+\supervisor{dr hab. Adrian Horzyk}
 %\supervisor{Marcin Szpyrka PhD, DSc}
 
-\degreeprogramme{Informatyka}
+\degreeprogramme{Automatyka i robotyka}
 %\degreeprogramme{Computer Science}
 
 \date{2015}
 
-\department{Katedra Informatyki Stosowanej}
+\department{Katedra Automatyki i Robotyki}
 %\department{Department of Applied Computer Science}
 
 \faculty{Wydział Elektrotechniki, Automatyki,\protect\\[-1mm] Informatyki i Inżynierii Biomedycznej}
@@ -162,12 +173,7 @@ backend=bibtex
 \tableofcontents
 \clearpage
 
-\include{rozdzial3}
-\include{rozdzial1}
-\include{rozdzial2}
-\include{tests}
-
-
+\include{rozdzial1/rozdzial1}
 
 % itd.
 % \appendix
