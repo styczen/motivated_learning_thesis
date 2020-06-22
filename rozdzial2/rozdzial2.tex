@@ -1,0 +1,124 @@
+\chapter{Motywacja...}
+\label{cha:rozdzial2}
+
+Motywacja to coś bardzo ważnego a mi teraz tego trochę brak :D.
+
+Motivated learning for computational intelligence - notatki.
+
+Agent określany jako wiara -- pożądania -- intencja (ang. \textit{belief -- 
+desire -- intention}) jest traktowany jako odnośnik do architektury zastosowanej 
+dla agentów uczenia motywowanego.
+Ból abstrakcyjny powstaje, jeżeli agent nie jest wstanie wykonać akcji, która
+obniży wartość bólu pierwotnego.
+Ból abstrakcyjny nie jest stymulowany przez sensor wartości fizycznej (np. głód, 
+zmęczenie), ale jako ból generowany wewnętrznie.
+Bóle tworzą hierarchię wszerz i wgłąb, tworząc struktury grafowe. 
+W takich strukturach teoretycznie mogą pojawiać się zamknięte ścieżki, np. brak
+jedzenia może sprawić, żeby kupić więcej jedzenia, a do tego potrzebne są 
+pieniądze, które można zdobyć sprzedając jedzenie.
+Należy zastosować mechanizm wykrywający i zapobiegający takim sytuacjom.
+
+\textbf{Algorytm tworzenia celów (ang. \textit{goal creation system})}
+\begin{enumerate}
+    \item Wybierz dominujący ból stosując regułę zwycięzca bierze wszystko 
+        (ang. \textit{winner takes all}) spomiędzy konkurujących ośrodków bólu.
+        \begin{itemize}
+            \item Jeżeli żaden z bóli nie przekracza wcześniej zdefiniowanego 
+                progu, czekaj aż któryś z nich przekroczy ten próg.
+        \end{itemize}
+    \item Jako aktualny cel wybierz zmniejszenie dominującego bólu.
+        \begin{itemize}
+            \item aktualny cel motywuje agenta do działania.
+        \end{itemize}
+    \item Wybierz wcześniej nauczoną akcje, która z najwyższym 
+          prawdopodobieństwem spełni aktualny cel.
+        \begin{itemize}
+            \item Jeżeli nie ma żadnego, idź do punktu 6.
+        \end{itemize}
+    \item Sprawdź czy wybrana czynność może być wykonana w aktualnym środowisku. 
+        Jeśli nie, idź do punktu 3.
+    \item Wykonaj akcję.
+        \begin{itemize}
+            \item Jeśli ta akcja \textit{obniżyła} wartość dominującego bólu:
+                \begin{enumerate}
+                    \item Zwiększ wartości wag zależności pomiędzy aktualnym 
+                        bólem a~akcją jaka została wykonana i~zwiększ wartość 
+                        wag odpowiadających abstrakcyjnemu bólowi powiązanego 
+                        z~tą akcją.
+                    \item Idź do punktu 1.
+                \end{enumerate}
+            \item Jeśli ta akcja \textit{nie obniżyła} wartości dominującego bólu.
+                \begin{enumerate}
+                    \item Zmniejsz wartości wag zależności pomiędzy aktualnym 
+                        bólem a~akcją jaka została wykonana i~zmniejsz wartość 
+                        wag odpowiadających abstrakcyjnemu bólowi powiązanego 
+                        z~tą akcją.
+                    \item Idź do punktu 3.
+                \end{enumerate}
+        \end{itemize}
+    \item Wykonaj eksplorację przestrzeni akcji mającą na celu spełnienie celu.
+        \begin{itemize}
+            \item Jeśli nowa akcja \textit{zmniejszyła} wartość dominującego bólu.
+                \begin{enumerate}
+                    \item Zwiększ wartości wag zależności pomiędzy aktualnym 
+                        bólem a~akcją jaka została wykonana i~stwórz nowy 
+                        abstrakcyjny ból związany z~niemożliwością wykonania 
+                        tej akcji.
+                    \item Idź do punktu 1.
+                \end{enumerate}
+            \item Jeśli nowa akcja \textit{nie zmniejszyła} wartości 
+                dominującego bólu, idź do punktu 6.
+        \end{itemize}
+\end{enumerate}
+
+Uczenie motywowane może być zastosowane wspólnie z~uczeniem opartym na 
+ciekawości (ang. \textit{curiosity based learning}) -- ciekawość poinformuje 
+agenta o~nowych odkryciach, podczas gdy uczenie motywowane skupi się na 
+poszukiwaniu konkretnych celów, które nie są podane przez twórcę (tak jak 
+w~uczeniu ze wzmocnieniem).
+
+Porównanie uczenia motywowanego do uczenia ze wzmocnieniem.
+% TODO: 
+\begin{table}[H]
+\centering
+\caption{Porównanie uczenia ze wzmocnieniem do uczenia motywowanego. 
+Źródło: Motivated learning for computational intelligence}
+\begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+    \hline
+    \textbf{Uczenie ze wzmocnieniem} & \textbf{Uczenie motywowane} \\
+    \hline
+    Jedna funkcja kosztu (określona zewnętrznie) & Wiele funkcji kosztu 
+    (tworzone przez agenta) \\
+    \hline
+    Mierzalne nagrody -- może być zoptymalizowane & Wewnętrzne nagrody 
+    (niemierzalne) -- nie może być zoptymalizowane \\
+    \hline
+    Możliwy do przewidzenia & Niemożliwy do przewidzenia \\
+    \hline
+    Zadania zdefiniowane przez badacza & Agent sam stwarza sobie cele \\
+    \hline
+    Maksymalizacja nagrody -- potencjalnie niestabilne przy optymalizacji & 
+    Algorytm minimax -- stabilne \\
+    \hline
+    Brak wewnętrznych motywacji i tworzenia celów & Wewnętrzne motywacje 
+    i tworzenie celów \\
+    \hline
+    Zawsze aktywne & Wykonuje akcje, kiedy jest taka potrzeba albo agent uzna 
+    to za konieczne \\
+    \hline
+    Wysiłek uczenia wzrasta wraz ze zwiększaniem skomplikowania środowiska & 
+    Agent uczy się lepiej w skomplikowanych środowiskach \\
+    \hline
+\end{tabular}
+\end{table}
+
+Motivated Learning for the Development of Autonomous Systems
+
+Motywacja agenta powinna pojawić się w~wyniku procesu rozwojowego (Pfeifer 
+i~Bongard 2006). Zostało to zaobserwowane u~ludzi i~twierdzi się, że jest to 
+wynikiem nagradzania akcji, które choć trochę przekraczają możliwości człowieka. 
+Ludzie mają wewnętrzną potrzebę zadawania pytań: "Dlaczego?" i~"Jak?" w celu 
+zrozumienia otaczającego świata (środowiska).
+
+Na podstawie reguły ciekawości został zaproponowany inteligentny, adaptacyjny 
+system ciekawości (ang. \textit{intelligent adaptive curiosity}).
