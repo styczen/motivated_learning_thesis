@@ -1,6 +1,68 @@
 \chapter{Wprowadzenie}
 \label{cha:wprowadzenie}
 
+Od początku pierwszych urządzenie elektronicznych, a~szczególnie 
+zaprojektowaniu pierwszych komputerów, które mogły wykonywać pewne zbiory 
+instrukcji, naukowcy zastanawiali się jak wykorzystać te moce obliczeniowe. 
+Próbowano zdefiniować pojęcie inteligencji. I~tak w roku 1955 termin "sztuczna 
+inteligencja" został wprowadzony jako dyscyplina naukowa. Natomiast w~roku 1950 
+matematyk Alan Turing opracować test nazwany jego nazwiskiem, którego celem 
+jest sprawdzenie czy maszyna, która posiada inteligencję równą lub 
+przewyższającą człowieka.
+
+Test został wprowadzony w artykule \cite{turing_test}, w którym Turing 
+zaproponował zastąpienie pytania: \textit{Can machines think?} (ang. 
+\textit{Czy maszyny myślą?}) pewną formą testu. Polega on na prowadzeniu 
+rozmowy przez 2 osoby i~jedną maszynę. Zadaniem jednego człowieka i~maszyny 
+jest przekonanie sędziego, że są one człowiekiem. Jeżeli sędzie nie jest 
+wstanie zdecydować, oznacza to, że maszyna zdaje test. Ostatecznie pytanie, 
+które zadawał Turing  na początku artykułu zostaje zmienione na: \textit{Can 
+machines do what we (as thinking entities) can do?} (ang. \textit{Czy maszyny 
+umieją robić to, co myślące istoty?}).
+
+Temat inteligencji były coraz bardziej popularny, ale po kilku latach badań, 
+nie osiągano rezultatów. Nastąpiła tzw. zima dla AI (ang. \textit{AI winter}). 
+W trakcie kilku dziesięcioleci nie prowadzono wielu badań w zakresie sztucznej 
+inteligencji. Trwało to do początku lat dziewięćdziesiątych, kiedy to w roku 
+1998 francuski informatyk Yann LeCun wydał artykuł \cite{lecunn_cnn} opisujący 
+konwolucyjne sieci neuronowe, które uczyły bezpośrednio z obrazów, a nie z 
+wcześniej zaprojektowanych cech. Był to początek przełomu w procesie uczenia 
+sztucznych sieci neuronowych, ponieważ pierwszy raz można było przeprowadzić 
+w~pełni automatyczne uczenie sieci neuronowej.
+
+Kolejnym przełomem w dziedzinie sztucznej inteligencji była praca Alexa 
+Krizhevskiego, Ilyi Sutskevera i~Geoffreya E. Hintona \cite{alexnet}. Ich 
+przełomowa implementacja architektury sieci konwolucyjnej na kartach 
+graficznych umożliwiła stworzenie głębokiej (jak na rok 2012) sieci, która 
+wygrała konkurs ImageNet \cite{imagenet_competition}. Od tego roku tematyka 
+sztucznych sieci neuronowych, a~w~szczególności konwolucyjnych sieci 
+neuronowych. Postęp technologiczny w architekturach kart graficznych umożliwił 
+tworzenie coraz większych sieci, które dawały coraz lepsze rezultaty. Powrót do 
+algorytmów uczenia ze wzmocnieniem (ang. \textit{reinforcement learning}) 
+sprawił, że powróciła chęć rozwijania sztucznej inteligencji, a nawet próby 
+regulacji prawnej tych rozwiązań.
+
+Szczególną uwagę należy zwrócić na uczenie ze wzmocnieniem, które przypomina po 
+części silną sztuczną inteligencję (ang. \textit{artificial general 
+intelligence}). Agent mając niewiele informacji o środowisku jest w stanie 
+nauczyć się skomplikowanych zadań bez wcześniejszej wiedzy. Popularnych 
+przykładem jest AlphaGo, który został zaprojektowany przez naukowców z DeepMind 
+do grania w grę Go \cite{alphago_deepmind}.
+
+Należy jednak pamiętać, że mimo świetnych wyników tych programów komputerowych, 
+to daleko im od silnej sztucznej inteligencji. Są one przystosowane do 
+rozwiązywania jednego problemu, w znanym środowisku. Jak środowisko zostanie 
+zmienione, to wyniki nie są aż tak dobre. AlphaGo nie zacznie nagle 
+autonomicznie sterować samochodem, ponieważ algorytm zna całkowicie inne 
+środowisko. Można zauważyć brak przystosowania do zmieniającego się środowiska.
+
+Jednym z podejść, aby rozwiązać problem dynamicznego środowiska jest 
+umożliwienie agentowi samodzielne decydowanie jakie zadania musi on wykonać, 
+aby rozwiązał główny problem. Uczenie motywowane (ang. \textit{motivated 
+learning}) odnosi się do tego problemu i~umożliwia rozwiązywanie złożonych 
+problemów w zmieniających się warunkach działania agenta.
+
+
 Ta praca jest o~uczeniu motywowanym przy eksploracji środowiska przez agenta, 
 który w~przypadku tej pracy dyplomowej będzie wykonywana na robocie mobilnym. 
 Zastosowane zostanie środowisko symulacyjne umożliwiające sterowanie takim 
@@ -13,13 +75,50 @@ umożliwiają do odczytania.
 \section{Cele pracy}
 \label{sec:cele_pracy}
 
-Celem poniższej pracy jest zastosowanie uczenia motywowanego do eksploracji 
-nieznanego środowiska przez agenta (robota mobilnego) i~porównanie osiągnięć 
-takiego agenta w~porównaniu z~podobnym agentem wykorzystującym algorytmy uczenia 
-ze wzmocnieniem, np. przy jednoczesnej lokalizacji i~mapowaniu SLAM (ang. 
-\textit{simultaneous localization and mapping}).
+Celem pracy było zbadanie skuteczności uczenia motywowanego przy eksploracji 
+i~poznawaniu wirtualnego środowiska przez inteligentnego agenta kognitywnego. 
+Zakres pracy obejmował przygotowanie wirtualnego środowiska umożliwiającego 
+testowanie zaimplementowanych rozwiązań. Następnie inteligenty agent miał za 
+zadanie poznawanie środowiska i~tworzenie nowych skojarzeń i~wiedzy 
+poprawiających jego umiejętności oraz stopniowo rozbudowujących hierarchię jego 
+potrzeb i~możliwości. 
 
-%---------------------------------------------------------------------------
+TODO 
+
+W ramach pracy należało sprawdzić i~porównać skuteczność nowych rozwiązań 
+z~zakresu uczenia motywowanego z~innymi podejściami, np. uczeniem ze 
+wzmocnieniem. 
+
+TODO
+
+Pierwszym etapem był przegląd literatury związanej z tematem uczenia 
+motywowanego oraz uczenia ze wzmocnieniem, którego celem było zgłębienie wiedzy 
+na ten temat w celu zrozumienia różnic i~możliwych ograniczeń powyższych 
+rozwiązań. 
+
+Bardzo ważnym etapem był wybór środowiska symulacyjnego, aby móc szybko 
+testować zaimplementowane rozwiązania. Takie podejście umożliwia bezpieczne 
+sprawdzenie algorytmów, w takim środowisku wystarczy jeden przycisk, aby 
+przerwać całe zadanie bez zagrożenia dla ludzi w środowisku oraz samego robota. 
+Ważne, aby wybrane środowisko umożliwiło dużą ingerencję w środowisko. 
+Tworzenie dynamicznego świata jest podstawą, aby można było testować 
+skuteczność algorytmów uczenia motywowanego.
+
+Większość algorytmów zaimplementowano w językach C++/Python, tak aby wysoka 
+logika mogła być szybko prototypowana w języku jakim jest Python, natomiast 
+wszelkie obliczenia, które wymagają dużej wydajności zostały zaimplementowane 
+w~języku C++. 
+
+Istotnym aspektem tej pracy dyplomowej jest analiza porównawcza z innymi 
+znanymi i~ugruntowanymi algorytmami do eksploracji środowiska, np. SLAM (ang. 
+\textit{simultaneous localization and mapping}). Porównanie osiągnięć agenta 
+wykorzystującego algorytmy uczenia motywowanego z podobnym agentem 
+korzystającym z innych podejść umożliwi sprawdzenie czy umożliwienie tworzenia 
+własnych wewnętrznych celów sprawia, że agent dostosowuje się do zmiennego 
+środowiska.
+
+
+%---------------------------------------------------------p------------------
 
 \section{Zawartość pracy}
 \label{sec:zawartosc_pracy}
