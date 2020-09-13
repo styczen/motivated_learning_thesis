@@ -143,6 +143,20 @@ się jak wchodzić w interakcję z otoczeniem oraz budować oczekiwania związan
 przyszłymi wydarzeniami, czyli umiejętność prognozowania przyszłych wydarzeń na 
 podstawie aktualnego stanu oraz tego, co stało się w przeszłości.
 
+Agent uczenia motywowanego dzieli wspólne właściwości ze specjalnym typem 
+agenta racjonalnego (ang. \textit{rational software agent}) znanego jako agenta 
+przekonań -- pragnień -- intecji (ang. \textit{belief -- desire -- intention}). 
+To pewien z modeli tworzenia oprogramowania, który umożliwia rozdzielenie 
+funkcjonalności od siebie. Ten model skupia się na planowaniu i sposobie 
+wykonania pewnych zadań. Cechy wspólne z agentem uczenia motywowanego to 
+tworzenie reprezentacji poznanego środowiska, pragnienia to motywacje dla 
+agenta motywowanego. Różnicą jest sposób implementacji reprezentacji wiedzy. 
+Dla agenta uczenia motywowanego nie ma konkretnego sposobu implementacji, 
+ponieważ widza ta jest reprezentowana przez struktury sieci neuronowych a tym 
+samym wszelkie plany, co do wykonywanych akcji muszą być pochodzą z aktywacji 
+neuronów w sieci neuronowej.
+
+
 \section{Ból jako motywacja}
 
 Zadaniem każdej maszyny jest wykonywanie pewnych z góry określonych zadań. 
@@ -170,6 +184,29 @@ wywołać ból fizyczny, kiedy z ciekawości oparzy się dotykając czegoś gor�
 Ale ten ból sprawi, że w przyszłości będzie wiedziało jak postępować, aby nie 
 zwiększać tego bólu.
 
+Według Starzyka bóle prymitywne są bezpośrednio związane z bodźcami odbieranymi 
+przez sensory maszyny. Natomiast definiuje on bóle abstrakcyjne (ang. 
+\textit{abstract pains}). Pojawiają się one, kiedy agent nie jest w stanie 
+wykonać akcji, która zmniejszy wartość bólu prymitywnego. W ten sposób mogą się 
+tworzyć struktury grafowe opisujące relacje pomiędzy różnymi bólami. Co ważne, 
+bóle abstrakcyjne nie są stymulowane przez sensor wartości fizycznej, np. niski 
+poziom naładowania baterii dla robota.  
+\ref{fig:abstractpainscreation}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{rozdzial2/images/abstract_pains_creation}
+	\caption{Tworzenie sygnałów abstrakcyjnych bóli. Źródło: 
+	\cite{ml_dev_auto_systems}}
+	\label{fig:abstractpainscreation}
+\end{figure}
+
+Bóle tworzą hierarchię wszerz i wgłąb, tworząc struktury grafowe. 
+W takich strukturach teoretycznie mogą pojawiać się zamknięte ścieżki, np. brak
+jedzenia może sprawić, żeby kupić więcej jedzenia, a do tego potrzebne są 
+pieniądze, które można zdobyć sprzedając jedzenie. Należy wziąć pod uwagę takie 
+sytuacje w procesie tworzenia całej architektury i sposobu uczenia maszyny.
+
 \section{Tworzenie celów w uczeniu motywowanym}
 
 Jednym z podstawowych źródeł tworzenia nowych celów jest wcześniej wspomniany 
@@ -181,27 +218,8 @@ człowiek uczy się zdobywać jedzenie oraz jeść. Mimo, że wszelkie abstrakcy
 bóle, które wykształcają się w dalszym rozwoju, to te prymitywne umożliwiają 
 realizację kolejnych zadań czy celów.
 
-
-
-
-\begin{center}
-	\line(1,0){400} 
-\end{center}
-
-Motivated learning for computational intelligence - notatki.
-
-Agent określany jako wiara -- pożądania -- intencja (ang. \textit{belief -- 
-desire -- intention}) jest traktowany jako odnośnik do architektury zastosowanej 
-dla agentów uczenia motywowanego.
-Ból abstrakcyjny powstaje, jeżeli agent nie jest wstanie wykonać akcji, która
-obniży wartość bólu pierwotnego.
-Ból abstrakcyjny nie jest stymulowany przez sensor wartości fizycznej (np. głód, 
-zmęczenie), ale jako ból generowany wewnętrznie.
-Bóle tworzą hierarchię wszerz i wgłąb, tworząc struktury grafowe. 
-W takich strukturach teoretycznie mogą pojawiać się zamknięte ścieżki, np. brak
-jedzenia może sprawić, żeby kupić więcej jedzenia, a do tego potrzebne są 
-pieniądze, które można zdobyć sprzedając jedzenie.
-Należy zastosować mechanizm wykrywający i zapobiegający takim sytuacjom.
+Dokładny opis algorytmu tworzenia celów został opisany w 
+\cite{ml_comp_int}
 
 \textbf{Algorytm tworzenia celów (ang. \textit{goal creation system})}
 \begin{enumerate}
@@ -262,48 +280,16 @@ agenta o~nowych odkryciach, podczas gdy uczenie motywowane skupi się na
 poszukiwaniu konkretnych celów, które nie są podane przez twórcę (tak jak 
 w~uczeniu ze wzmocnieniem).
 
-Porównanie uczenia motywowanego do uczenia ze wzmocnieniem.
-% TODO: 
-\begin{table}[H]
-\centering
-\caption{Porównanie uczenia ze wzmocnieniem do uczenia motywowanego. 
-Źródło: Motivated learning for computational intelligence}
-\begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
-    \hline
-    \textbf{Uczenie ze wzmocnieniem} & \textbf{Uczenie motywowane} \\
-    \hline
-    Jedna funkcja kosztu (określona zewnętrznie) & Wiele funkcji kosztu 
-    (tworzone przez agenta) \\
-    \hline
-    Mierzalne nagrody -- może być zoptymalizowane & Wewnętrzne nagrody 
-    (niemierzalne) -- nie może być zoptymalizowane \\
-    \hline
-    Możliwy do przewidzenia & Niemożliwy do przewidzenia \\
-    \hline
-    Zadania zdefiniowane przez badacza & Agent sam stwarza sobie cele \\
-    \hline
-    Maksymalizacja nagrody -- potencjalnie niestabilne przy optymalizacji & 
-    Algorytm minimax -- stabilne \\
-    \hline
-    Brak wewnętrznych motywacji i tworzenia celów & Wewnętrzne motywacje 
-    i tworzenie celów \\
-    \hline
-    Zawsze aktywne & Wykonuje akcje, kiedy jest taka potrzeba albo agent uzna 
-    to za konieczne \\
-    \hline
-    Wysiłek uczenia wzrasta wraz ze zwiększaniem skomplikowania środowiska & 
-    Agent uczy się lepiej w skomplikowanych środowiskach \\
-    \hline
-\end{tabular}
-\end{table}
+\section{Podstawowy element systemy tworzenia celów}
 
-Motivated Learning for the Development of Autonomous Systems
+Tekst
 
-Motywacja agenta powinna pojawić się w~wyniku procesu rozwojowego (Pfeifer 
-i~Bongard 2006). Zostało to zaobserwowane u~ludzi i~twierdzi się, że jest to 
-wynikiem nagradzania akcji, które choć trochę przekraczają możliwości człowieka. 
-Ludzie mają wewnętrzną potrzebę zadawania pytań: "Dlaczego?" i~"Jak?" w celu 
-zrozumienia otaczającego świata (środowiska).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{rozdzial2/images/goal_creation_system_unit}
+	\caption{Schemat podstawowego elementu systemu tworzenia celów. Źródło: 
+	\cite{motivation_in_ei}.}
+	\label{fig:goalcreationsystemunit}
+\end{figure}
 
-Na podstawie reguły ciekawości został zaproponowany inteligentny, adaptacyjny 
-system ciekawości (ang. \textit{intelligent adaptive curiosity}).
+tu też tekst

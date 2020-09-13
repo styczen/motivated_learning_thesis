@@ -1,4 +1,39 @@
-\chapter{Środowisko symulacyjne}
+\chapter{Uczenie motywowane i ze wzmocnieniem -- porównanie}
 \label{cha:rozdzial4}
 
-Kilka słów o Gazebo\dots
+Porównanie uczenia motywowanego do uczenia ze wzmocnieniem.
+% TODO: 
+\begin{table}[H]
+	\centering
+	\caption{Porównanie uczenia ze wzmocnieniem do uczenia motywowanego. 
+		Źródło: Motivated learning for computational intelligence}
+	\begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+		\hline
+		\textbf{Uczenie ze wzmocnieniem} & \textbf{Uczenie motywowane} \\
+		\hline
+		Jedna funkcja kosztu (określona zewnętrznie) & Wiele funkcji kosztu 
+		(tworzone przez agenta) \\
+		\hline
+		Mierzalne nagrody -- może być zoptymalizowane & Wewnętrzne nagrody 
+		(niemierzalne) -- nie może być zoptymalizowane \\
+		\hline
+		Możliwy do przewidzenia & Niemożliwy do przewidzenia \\
+		\hline
+		Zadania zdefiniowane przez badacza & Agent sam stwarza sobie cele \\
+		\hline
+		Maksymalizacja nagrody -- potencjalnie niestabilne przy optymalizacji & 
+		Algorytm minimax -- stabilne \\
+		\hline
+		Brak wewnętrznych motywacji i tworzenia celów & Wewnętrzne motywacje 
+		i tworzenie celów \\
+		\hline
+		Zawsze aktywne & Wykonuje akcje, kiedy jest taka potrzeba albo agent 
+		uzna 
+		to za konieczne \\
+		\hline
+		Wysiłek uczenia wzrasta wraz ze zwiększaniem skomplikowania środowiska 
+		& 
+		Agent uczy się lepiej w skomplikowanych środowiskach \\
+		\hline
+	\end{tabular}
+\end{table}
