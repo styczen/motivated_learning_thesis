@@ -211,7 +211,7 @@ sytuacje w procesie tworzenia całej architektury i sposobu uczenia maszyny.
 
 Jednym z podstawowych źródeł tworzenia nowych celów jest wcześniej wspomniany 
 ból. Najbardziej prymitywnym bólem u ludzi jest uczucie dyskomfortu, gdy czują 
-głów. W maszynach można to odnieść do poziomu naładowania baterii w robocie i 
+głód. W maszynach można to odnieść do poziomu naładowania baterii w robocie i 
 coraz niższy poziom sprawia, że ból związany z brakiem energii zwiększa się. 
 Agent uczenia motywowanego musi się nauczyć jak ten ból zmniejszać, tak jak 
 człowiek uczy się zdobywać jedzenie oraz jeść. Mimo, że wszelkie abstrakcyjne 
@@ -280,9 +280,22 @@ agenta o~nowych odkryciach, podczas gdy uczenie motywowane skupi się na
 poszukiwaniu konkretnych celów, które nie są podane przez twórcę (tak jak 
 w~uczeniu ze wzmocnieniem).
 
-\section{Podstawowy element systemy tworzenia celów}
+\section{Podstawowy element systemu tworzenia celów}
 
-Tekst
+Mechanizm budowania celów składa się z wielu, prostych elementów nazywanych 
+jednostkami tworzenia celów (ang. \textit{goal creation unit}). Składa się on 
+głównie z trzech typów neuronów, które wchodzą ze sobą w interakcję. Są to:
+
+\begin{itemize}
+	\item neurony odpowiadające za ból (ang. \textit{pain center neurons}),
+	\item neurony wzmacniające lub zmniejszające odczucie bólu (ang. 
+	\textit{reinforcement neuro-transmitter neurons}),
+	\item neurony odpowiadające za motorykę (ang. \textit{neurons in sensory 
+	and motor pathway}).
+\end{itemize}
+
+Schemat reprezentujący połączenia zawarto na rysunku 
+\ref{fig:goalcreationsystemunit}.
 
 \begin{figure}[H]
 	\centering
@@ -292,4 +305,65 @@ Tekst
 	\label{fig:goalcreationsystemunit}
 \end{figure}
 
-tu też tekst
+Neurony odpowiadające za odczuwanie bólu (te po lewej stronie na rysunku 
+\ref{fig:goalcreationsystemunit}) są stymulowane przez sygnał reprezentujący 
+ból oznaczany przez $I_P$. Reprezentuje on negatywny stymulant, np. ból, 
+dyskomfort czy nieprzyjemność. Ponieważ ból istnieje z powodu braku czegoś w 
+środowisku (oznaczone na rysunku jako "missing objects"), to neurony 
+odpowiedzialne za detekcję bólu aktywują się w momencie wyciszenia neuronu 
+odpowiedzialnego za czytanie wartości z otoczenia. Dodana została także pamięć 
+wartości bólu z poprzedniego wydarzenia, oznaczone jako $I_{Pd}$. Neurony 
+wykorzystują tą wartość do wzmacniania uczucia odczuwania bólu, jeżeli 
+zwiększył się on od poprzedniego wydarzenia. Wartość tego wzmocnienia zapisano 
+w równaniu \ref{equ:reinforcement_pain}.
+
+\begin{equation}
+	\label{equ:reinforcement_pain}
+	r = I_P - I_{Pd}
+\end{equation}
+
+Ostatnią grupą (po prawej stronie na rysunku \ref{fig:goalcreationsystemunit}) 
+są neurony odpowiedzialne za obliczanie wartości akcji jakie ma wykonać robot. 
+Na początku centrum detekcji bólu bezpośrednio wpływa na neurony odpowiedzialne 
+za wykonywanie akcji, ponieważ wszelkie wagi neuronów $W_{MP}$ są losowo 
+zainicjalizowane. W trakcie poznawania środowiska, maszyna dostraja wartości 
+tych wag. Dodatkowo, aby pewna akcja była wykonana muszą być dostępne pewne 
+obiekty z otoczenia (na rysunku \ref{fig:goalcreationsystemunit} oznaczone jako 
+"Sensor" po prawej stronie). Na początku neuron będzie miał powiązania z 
+wieloma różnymi obiektami poprzez losowa zainicjalizowane wagi $W_{MS}$.
+
+Po wykonanej akcji, która zmniejszyła albo zwiększyła wartość odczuwanego bólu 
+(wykrytego przez drugą grupę neuronów odpowiedzialną za detekcję bólu), 
+generowany jest sygnał $r$ (obliczony zgodnie z równaniem 
+\ref{equ:reinforcement_pain}). Wykorzystywany jest to wzmocnienia lub 
+osłabienia wag $W_{MP}$ i $W_{MS}$ zgodnie z równaniem \ref{equ:weights_update}
+
+\begin{equation}
+	\label{equ:weights_update}
+	\begin{aligned}
+		W_{MP} = W_{MP} + r \cdot \beta ^ n \\
+		W_{MS} = W_{MS} + r \cdot \beta ^ n
+	\end{aligned}
+\end{equation}
+
+gdzie:
+\begin{itemize}
+	\item $\beta$ -- oznacza współczynnik uczenia, mniejszy od wartości 1,
+	\item $n$ -- oznacza jak wiele razy dane połączenie było zmieniane.
+\end{itemize}
+
+Dodatkowo neuron odpowiedzialny za reprezentację obiektu, który był użyty do 
+zmniejszenia bólu zostanie dodany z wagą $W_{SP}$ w celu połączenia centrum 
+detekcji bólu z neuronem sensorycznym. Ten neuron będzie uczony korzystając 
+uczenia metodą Hebba.
+
+Z kolei z drugiej strony, obiekt, którego zabrakło i stworzył on ból 
+abstrakcyjny, staje się dostępny. Zostaje stworzony neuron reprezentujący 
+połączenie neuronu odpowiedzialnego za motorykę z neuronem z brakującym 
+obiektem z wagą $W_{SM}$.
+
+Oba wymienione wcześniej połączone będą uczone metodą wzmocnienia. Oznacza to, 
+że im mocniejsza zmiana poziomu bólu, tym mocniejsza korekta wartości tych wag. 
+
+
+
