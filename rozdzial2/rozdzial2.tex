@@ -197,7 +197,7 @@ poziom naładowania baterii dla robota.
 	\centering
 	\includegraphics[width=0.5\linewidth]{rozdzial2/images/abstract_pains_creation}
 	\caption{Tworzenie sygnałów abstrakcyjnych bóli. Źródło: 
-	\cite{ml_dev_auto_systems}}
+	\cite{ml_dev_auto_systems}.}
 	\label{fig:abstractpainscreation}
 \end{figure}
 
@@ -365,5 +365,50 @@ obiektem z wagą $W_{SM}$.
 Oba wymienione wcześniej połączone będą uczone metodą wzmocnienia. Oznacza to, 
 że im mocniejsza zmiana poziomu bólu, tym mocniejsza korekta wartości tych wag. 
 
+\section{Budowanie hierarchii celów}
 
+Prymitywny ból to sygnał otrzymywany przez sensory prymitywnych bóli. Stymulują 
+one centrum detekcji prymitywnego bólu. Aby rozwiązać ten problem, maszyna jest 
+zmuszona do eksploracji dostępnych akcji albo wykonywania akcji, która 
+zmniejsza ten ból. Na początku symulacji, taka eksploracja opiera się na 
+losowych sprawdzaniu przestrzeni dostępnych akcji lub wykorzystaniu 
+wprowadzonych akcji przez twórcę maszyny. Można to określić jako genetycznie 
+ustawione pewne akcje, które nie muszą być poszukiwane w procesie eksploracji, 
+ponieważ agent od początku ma o nich wiedzę. U człowieka przykładem może być 
+bicie serce czy niekontrolowane przez nasz bezpośrednio oddychanie, które 
+umożliwia podtrzymania funkcji życiowych.
+
+W celu opisania schematu tworzenia całej hierarchii posłużono się prostym 
+przykładem prymitywnego bólu opisującego niski poziom cukru we krwi. W robocie 
+mobilnym można to określić jako niski poziom naładowania baterii. Aby rozwiązać 
+problem niskiego poziomu cukru (naładowania baterii), po pewnym czasie 
+eksploracji dostępnych akcji, akcja "jedzenie", wraz percepcją "jedzenia" jest 
+nagrodzona, ponieważ zmniejsza ból związany z niskim poziomem cukru. Następuje 
+asocjacja, żeby obniżyć poziom bólu związany z niskim poziomem cukru należy 
+akcję "jedzenia" połączyć ze znalezieniem i obserwacją "jedzenia". Dodatkowo 
+akcja "jedzenie" będzie powodowała oczekiwanie na zapewnienie odpowiedniego 
+poziomu cukru (poziomu naładowania baterii w robocie).
+
+Brak "jedzenia" (brak możliwości używania baterii albo brak wiedzy, gdzie się 
+ona znajduje) sprawia, że w momencie wysokiego poziomu bólu spowodowanego 
+niskim poziomem cukru, spowoduje pojawienie się stresu z powodu braku 
+"jedzenia", który można nazwać abstrakcyjnym centrum bólu. Ból abstrakcyjny nie 
+jest pobudzany przez odczucia sensoryczne. Symbolizuje on pewien dyskomfort 
+spowodowany brakiem możliwości obniżenia poziomu bólu związanego z prymitywnym 
+bólem.
+
+Jeżeli "jedzenie" nie jest dostępne, agent nie jest w stanie zredukować 
+prymitywnego bólu. Zaczyna szukać rozwiązania "abstrakcyjnego bólu". Uczenie 
+odbywa się w podobny sposób jak dla prymitywnego bólu. Agent poszukuje jakie 
+pary akcji i obserwacji sprawiają, że ból się zmniejsza i neurony wzmacniające 
+to odczucie aktualizują swoje wagi. Cały schemat kolejnych abstrakcyjnych bóli 
+i ich relacji do prymitywnych bóli pokazano na rysunku 
+\ref{fig:abstractpaincreationcomplex}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{rozdzial2/images/abstract_pain_creation_complex}
+	\caption{Tworzenie abstrakcyjnych bóli. Źródło: \cite{ml_comp_int}.}
+	\label{fig:abstractpaincreationcomplex}
+\end{figure}
 

@@ -52,7 +52,7 @@
 
 
 \linespread{1.3}
-\renewcommand{\labelitemi}{--}
+%\renewcommand{\labelitemi}{--}
 
 %------------------------------------------------------------------------------
 
