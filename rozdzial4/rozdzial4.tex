@@ -135,11 +135,66 @@ motywowanego z różnymi algorytmami uczenia ze wzmocnieniem, które zostały
 omówione w rozdziale \ref{cha:rozdzial3}. Opis opiera się na rezultatach 
 Starzyka i innych z pracy \cite{ml_vs_rl_comparative_study}.
 
-Środowisko składa się z zasobów, które tworzą 8 poziomową hierarchię zależności 
-między sobą, w którym odnowienie każdego z surowców jest zależne od innych 
-zasobów. W środowisku znajduje się jeden surowiec, którego brak będzie wpływał 
-na jeden prymitywny ból. Aby zmniejszyć ból związany z brakiem tego surowca 
-należy wykonać akcję, która korzysta z innego zasobu, którego z czasem także 
-będzie brakowało. Aby odnowić ilość tego zasobu będzie konieczne wykonanie 
-innej akcji i kolejnego surowca. I takie zależności tworzy reszta zasobów.
+Środowisko składa się z zasobów, które tworzą 8 poziomową hierarchię 
+zależności między sobą, w którym odnowienie każdego z surowców jest zależne 
+od innych zasobów. W środowisku znajduje się jeden surowiec, którego 
+brak będzie wpływał na jeden prymitywny ból. Aby zmniejszyć ból związany 
+z brakiem tego surowca należy wykonać akcję, która korzysta z innego 
+zasobu, którego z czasem także będzie brakowało. Aby odnowić ilość tego 
+zasobu będzie konieczne wykonanie innej akcji i kolejnego surowca. 
+I takie zależności tworzy reszta zasobów.
+
+Algorytmy, których użyto związanych z uczeniem ze wzmocnieniem to:
+
+\begin{itemize}
+    \item Q -- learning,
+    \item SARSA($\lambda$),
+    \item Hierarchical Reinforcement Learning,
+    \item Dyna -- Q++,
+    \item Explauto,
+    \item TD -- FALCON,
+    \item NFQ RL (Neural Fitted Q iteration reinforcement learning)
+\end{itemize}
+
+Poniżej zamieszczono porównanie wyników agenta z uczeniem motywowanym z agentam
+i korzystającymi z algortymów uczenia ze wzmocnieniem dla różnych współczynników
+$S_{rate}$, który opisuje współczynnik szybkości zmniejszania się zasobów, 
+tzn. im większy współczynnik, tym zasoby się szybciej zmniejszają, a tym samym
+środowisko jest bardzoej wrogie.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\linewidth]{rozdzial4/images/ml_vs_rl_blackbox_srate_1}
+    \caption{Porównanie resultatów agenta ML z agentami RL dla $S_{rate}=1.0$. 
+    Źródło: \cite{ml_vs_rl_comparative_study}.}
+    \label{fig:ml_vs_rl_blackbox_srate1}
+\end{figure}
+
+Dla współczynnika $S_{rate}=1$ na początku większość agentów daje sobie radę 
+porównywalnie tak samo. Sytuacja się zmienia już po około 500 iteracjach, 
+gdzie wiele agentów przestaje sobie dawać radę w środowisku o coraz mniejszej
+liczbie zasobów. Po około 2000 iteracjach większość agentów stabilizuje się
+na tej samej wartości nagrody. Jedynym agentem, który daje sobie radę ze
+zmnieniającym się otoczeniem jest agent z uczniem motywowanym. Wynika to
+z najlepszego przystosowania do hierarchiczności świata tzn. zasobność 
+surowców jest zależna od siebie hierarchicznie.  
+
+Jeszcze bardziej zróżnicowane rezultaty i większe różnice pomiędzy agentem
+z uczeniem motywowanym i agentem z uczeniem ze wzmocnieniem pojawiają
+się dla współczynnika $S_{rate}=8.0$. Rezultaty widać na rysunku \ref{fig:ml_vs_rl_blackbox_srate8}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth]{rozdzial4/images/ml_vs_rl_blackbox_srate_8}
+    \caption{Porównanie resultatów agenta ML z agentami RL dla $S_{rate}=8.0$. 
+    Źródło: \cite{ml_vs_rl_comparative_study}.}
+    \label{fig:ml_vs_rl_blackbox_srate8}
+\end{figure}
+
+Dla bardzo wrogiego środowiska, agent z uczeniem motywowanym daje sobie wciąż
+radę, natomiast większość agentów z uczeniem ze wzmocnieniem, bardzo szybko 
+stabilizuje się na niskiej wartości nagrody, ponieważ środowisko stało się
+bardzo szybko wrogie poprzez niskie zasoby surowców. Agent z uczniem
+motywowanym jest w stanie szybko stworzyć hierachię abstrokcyjnych bóli,
+których obniżenie sprawia, że brakujące zasoby mogą zostać odbudowane.
 
