@@ -30,6 +30,13 @@ Jako komplementarny symulator do Stage, nazwa Gazebo została wybrana jako
 struktura najbliższa scenie zewnętrznej. Nazwa utknęła pomimo faktu, że 
 większość użytkowników Gazebo symuluje środowisko wewnętrzne.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\linewidth]{rozdzial5/images/gazebo_logo}
+    \caption{Logo Gazebo Sim. Źródło: \cite{gazebo_sim_website}.}
+    \label{fig:gazebo_logo}
+\end{figure}
+
 Symulator ten ma zintegrowane silnik fizyki ODE (Open Dynamics Engine). Wykorzystuje
 renderowanie korzystając z OpenGL. Dzięki temu możeliwe jest symulowanie wielu 
 rodzajów sensorów:
@@ -75,3 +82,40 @@ z podstawowych sensorów stosowanych przez człowieka na etapie poznawania noweg
 Środowisko Gazebo Sim składa się z kilku elementów, które sprawiają, że możliwe
 jest uruchomienie symulacji robota. Są to zgodnie z \cite{gazebo_components}.
 
+\begin{itemize}
+    \item \textbf{World files} -- pliki zawierające opis danego środowiska, 
+    w którym robot ma działać, można w nich modyfikować parametry świata, 
+    np. siłę grawitacji,
+    \item \textbf{Model files} -- pliki w formacie SDF zawierające opisy 
+    struktury robota,
+    \item \textbf{Environment variables} -- zmienne środowiskowego, które 
+    umożliwiają w prosty sposób uruchamiać Gazebo i ładować modele robotów 
+    do symulacji,
+    \item \textbf{Gazebo Server} -- główny program symulacji, który wykonuje 
+    wszelkie obliczenia tj. liczenie kolizji, symulowanie czujników,
+    \item \textbf{Graphical Client} -- umożliwia wyświetlanie wyników 
+    obliczeń z serwera Gazebo,
+    \item \textbf{Plugins} -- małe biblioteki, które umożliwiają w prosty 
+    sposób wchodzić w interakcję w symulacją poprzez tworzenie własnych 
+    sensorów czy wtyczek modyfikujących parametry świata z poziomu kodu.
+\end{itemize}
+
+Architektura całego systemu umożliwia proste projektowanie sensorów, robotów
+czy całych środowisk do symulowania różnych scenariuszy środowiska jak 
+parametry, np. siła grawitacji czy opory powietrza, jeżeli symulowane są roboty
+latające jak drony. 
+
+Gazebo używa rozproszonej architektury z rozdzielonymi bibliotekami do 
+symulacji fizyki, renderowania sceny, interfejsu użytkownika, komunikacji i 
+generowaniu sensorów. Dodatkowo w celu uruchomienia wszystkich możliwości 
+symulatora, wcześniej wspomnianych: \textit{gzserver} do symulowania fizyki, 
+renderowania i sensorów oraz \textit{gzclient}, który umożliwia wyświetlanie 
+interfejsu użytkownika. Elementy architektury Gazebo przedstawiono na rysunku 
+\ref{fig:gazebosystemarchitecture}:
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{rozdzial5/images/gazebo_system_architecture}
+	\caption{Architektura systemu Gazebo. Źródło: opracowanie własne.}
+	\label{fig:gazebosystemarchitecture}
+\end{figure}
