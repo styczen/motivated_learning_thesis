@@ -1,0 +1,19 @@
+\chapter{Agent w nieznanym środowisku}
+\label{praktyka_ml}
+
+Po zapoznaniu się z zagadnieniami związanymi z uczeniem motywowanym, środowiskiem
+symulacyjnym, należało zdefiniować środowisko w jakim robot mobilny może się poruszać.
+Jako robot testowy, użyto bardzo popularnej platformy Turtebot3 w wersji Waffle
+(\cite{turtebot3}).
+
+Ze względu na brak dostępu do prawdziwego robota oraz problemów jakie mogłoby sprawiać
+zaprojektowanie środowiska w skali 1 : 1, zdecydowano o symulacyjnym rozwiązaniu.
+Omawiane w poprzednich rozdziałach Gazebo, RViz i RQT zostały użyte do zaprojektowania
+środowiska, sterowaniu robota i wizualizacji aktualnej pozycji, stanu wewnętrznego 
+robota oraz stanu środowiska.
+
+Uczenie motywowane jest jeszcze mało zbadanym zagadnieniem, a celem tej pracy jest
+zbadanie wykorzystania algorytmów uczenia motywowanego na robocie mobilnym.
+Definiowane są dla niego pewne prymitywne bóle i akcje jakie może on wykonać w danej
+chwili czasu. W pierwszym rozwiązaniu ograniczono do zdefiniowania kilku prymitywnych bóli.
+Agentem jest robot mobilny, który ma możliwość wykonania ruchu na mapie

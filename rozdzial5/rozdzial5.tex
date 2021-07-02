@@ -119,3 +119,58 @@ interfejsu użytkownika. Elementy architektury Gazebo przedstawiono na rysunku
 	\caption{Architektura systemu Gazebo. Źródło: opracowanie własne.}
 	\label{fig:gazebosystemarchitecture}
 \end{figure}
+
+
+\section{Wizualizacja w RViz}
+Kolejnym bardzo przydatnym narzędziem stosowanym przy rozwijaniu oprogramowania na roboty
+jest program RViz. Służy on do wizualizacji danych z różnych sensorów w czytelny
+i przejrzysty sposób. Dostarcza także szereg tzw. interaktywnych markerów, z którymi
+użytkownik może wchodzić w interakcję i wydawać komendy do robota, który działa na
+innej maszynie. 
+
+Podgląd danych z kamer czy chmur punktów oraz połączenie przez sieć z robotem, możliwe
+jest zdalne sterowanie robotem przy jednoczesny wglądzie do aktualnych danych z kamer
+czy odometrii robota. RViz to bardzo prosty przykład interfejsu człowiek komputer
+HMI (ang. \textit{human -- machine interface}) znany szeroko ze sterowników przemysłowych.
+Sam program dostarcza API (ang. \textit{application programming interface}), który umożliwia
+rozszerzanie dostępnych funkcjonalności o bardziej dostosowane do wymagań danego projektu.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{rozdzial5/images/rviz_logo}
+	\caption{Logo programu RViz oraz robot PR2. Żródło: {\cite{rviz}}}
+	\label{fig:rvizlogo}
+\end{figure}
+
+W tym projekcie został on zastosowany do podglądu aktualnej pozycji robota na przygotowanej
+mapie oraz wizualizacji samej mapy, co obrazuje figura \ref{fig:rvizsample}. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{rozdzial5/images/rviz_sample}
+	\caption{Przykładowy zrzut ekranu aplikacji RViz z wyświetlonym modelem robota i mapą.
+	Źródło: opracowanie własne.}
+	\label{fig:rvizsample}
+\end{figure}
+
+\section{Zbiór bibliotek RQT}
+Ostatnim narzędziem, które znacznie usprawnia pracę w trakcie rozwijania oprogramowania
+na wszelkiego rodzaju roboty jest platforma programistyczna (ang. \textit{framework}) RQT.
+Oparta ona została na szeroko znanej bibliotece QT, służącej do projektowania interfejsów
+graficzny tzw. GUI (ang. \textit{graphical user interface}). Stosując RQT można łatwo
+projektować interfejsy graficzne do wygodnego sterowania robotem. Dzięki temu, że RQT
+korzysta z QT, możliwe jest stosowanie narzędzi dostarczanych przez QT, tj. QT Designer.
+Platforma RQT dostarcza podstawowe interfejsy, dzięki którym nasza aplikacja ma bezpośrednie
+połączenie do systemu robotycznego ROS, który został użyty w tym projekcie. Każda z takich
+aplikacji zachowuje się jak plugin do RQT. Możemy otworzyć wiele różnych pluginów
+w jednym oknie, aranżować ich rozmieszczenie w oknie aplikacji oraz dynamiczne
+włączać i wyłączać. Przykładowy widok okna RQT na obrazku \ref{fig:rqtsample} (proszę
+zwrócić uwagę na plugin z załadowaną stroną internetową w lewym górnym rogu).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{rozdzial5/images/rqt_sample}
+	\caption{Przykładowy widok załadowanych pluginów do RQT. Źródło: \cite{rqt}}
+	\label{fig:rqtsample}
+\end{figure}
+
