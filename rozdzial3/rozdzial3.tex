@@ -1,4 +1,68 @@
 \chapter{Uczenie ze wzmocnieniem}
 \label{cha:rozdzial3}
 
-Kilka słów o uczeniu ze wzmocnieniem\dots
+Przez wiele lat, wszelkie problemy optymalizacji były rozwiązywane przez 
+określenie funkcji kosztu, która może być wielokryterialna, tzn. wiele 
+zmiennych są optymalizowane. Często takie problemy są bardzo skomplikowane do 
+rozwiązania analitycznego a czasem nawet niemożliwe. Często problemem jest 
+wiele wymiarów, które składają się na problem optymalizacji. Dodatkowo zmienne 
+stanu wpływają na siebie, a tym samym nie ma możliwości na optymalizację 
+każdego parametru osobno.
+
+Sama dziedzina uczenia ze wzmocnieniem jest uznawana, obok uczenia 
+nienadzorowanego i uczenia nadzorowanego, za trzecią gałąź sztucznej 
+inteligencji. Początki uczenia ze wzmocnieniem się dzielą na trzy oddzielne 
+wątki, które przez wiele lat ewoluowały oddzielnie, aby pod koniec lat 80.-tych 
+XX wieku połączyć się w uczenie ze wzmocnieniem jakie jest znane dzisiaj.
+
+Pierwszy wątek opiera się na metodzie "prób i błędów" i wywodzi się z 
+psychologii i badaniami nad zwierzętami. Drugi wątek traktował o sterowaniu 
+optymalnym i rozwiązań stosujących funkcje kosztów i dynamicznego 
+programowanie, które jest bardzo ważnym elementem uczenia ze wzmocnieniem, ale 
+także rozwiązywanie problemów optymalizacji.
+
+Mniej znaną gałęzią rozwijaną były badania związane nad uczeniem 
+\textit{temporal -- difference}, które polega na porównywaniu wartości funkcji 
+kosztów dla dwóch różnych chwil czasowych. 
+
+Z biegiem czasu pojawiał się coraz mocniejszy sprzęt komputerowy, który 
+umożliwiał uruchamianie bardziej zaawansowanych i rozbudowanych algorytmów. 
+Dużą popularność uzyskał algorytm \textit{AlphaZero} opracowany przez firmę 
+DeepMind w roku 2017, który przez mechanizm grania ze sobą (ang. \textit{self 
+play}) i przeszukiwanie bardzo dużej przestrzeni stanów stosując heurystykę 
+\textit{Monte -- Carlo Tree Search} był w stanie opanować gry t.j. szachy, 
+shogi czy go i pokonać światowej sławy graczy. Szczególnie imponujące było 
+bardzo szybkie opanowanie gry go, którą przez wiele lat uważano za niemożliwą 
+do opanowania, ze względu na ogromną ilość możliwych pozycji, która została 
+oszacowana na $2.1 \cdot 10^{170}$.
+
+
+---------------
+
+To zawrzeć dalej $\dots$
+
+agent
+
+środowisko
+
+nagroda
+
+stany (dyskretne, ciągłe)
+
+polityki
+
+funkcje kosztu (value functions)
+
+deep rl
+
+równania bellmana
+
+Markov Decision Process
+
+model free vs model based RL
+
+
+
+krótki opis konkretnych algorytmów:
+
+
