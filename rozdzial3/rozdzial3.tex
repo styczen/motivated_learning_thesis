@@ -34,9 +34,68 @@ play}) i przeszukiwanie bardzo dużej przestrzeni stanów stosując heurystykę
 shogi czy go i pokonać światowej sławy graczy. Szczególnie imponujące było 
 bardzo szybkie opanowanie gry go, którą przez wiele lat uważano za niemożliwą 
 do opanowania, ze względu na ogromną ilość możliwych pozycji, która została 
-oszacowana na $2.1 \cdot 10^{170}$.
+oszacowana na $2.1 \cdot 10^{170}$. 
 
+Kolejnym bardzo dużym postępem w aktualnych badaniach związanych z uczeniem ze 
+wzmocnieniem była kolejna iteracja AlphaZero od firmy DeepMind, \textit{MuZero} 
+\cite{mu_zero}. Algorytm także stosował metody przeszukiwania Monte -- Carlo 
+Tree Search do stworzenia ogólnego modelu, który był w stanie grać na 57 grach 
+Atari. Nie znając wcześniej reguł powyższych gier, MuZero było w stanie 
+osiągnąć wyniki przewyższające te osiągane przez człowieka. 
 
+Do nauczenia powyższych algorytmów uczenia ze wzmocnieniem potrzebna było 
+środowisko symulacyjne, wysokiej jakości sprzęt. Przeprowadzono wiele milionów 
+iteracji, w których algorytm poprzez grę z samym sobą (termin w literaturze 
+anglojęzycznej opisujący to podejście to \textit{self play}). Obiecujące jest 
+to, że MuZero był w stanie opanować wiele gier różnych od siebie i o innych 
+regułach w stopniu, który człowiekowi zająłby wiele lat.
+
+\section{Podstawowe określenia i terminologia}
+
+Zanim zostaną przedstawione najbardziej znane algorytmy uczenia ze 
+wzmocnieniem, należy wprowadzić kilka podstawowych określeń i oznaczeń 
+stosowanych w opinie problemów związanych z algorytmami uczenia ze wzmocnieniem.
+
+\subsection{Agent i środowisko}
+
+Głównymi elementami każdego algorytmu uczenia ze wzmocnieniem jest 
+\textbf{agent} i \textbf{środowisko}, na który ten agent może wpływać. Bardzo 
+często każdą symulację dzieli się na krótkie chwile czasowe, w których agent 
+wykonuje jakąś akcję. Odnosząc to do naszego agenta, którym jest robot mobilny, 
+taką akcją może być żądana prędkość liniowa i prędkość kątowa robota 
+nieholomicznego. Zakładając, że środowisko jest choć częściowo obserwowalne, 
+agent otrzymuje aktualny \textbf{stan środowiska} oraz \textbf{nagrodę}, która 
+określa czy dana akcja zmieniała stan symulacji. Cały ten 
+mechanizm został przedstawiony na rysunku \ref{fig:rlschematagentsrodowisko}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{rozdzial3/images/rl_schemat_agent_srodowisko}
+	\caption{Schemat interakcji agenta ze środowiskiem. Źródło: opracowanie 
+	własne}
+	\label{fig:rlschematagentsrodowisko}
+\end{figure}
+
+Głównym celem każdego algorytmu uczenia ze wzmocnieniem jest maksymalizacja 
+skumulowanej nagrody. W trakcie nauki, agent może otrzymywać czasem wysokie 
+nagrody w danej epoce, a czasem nawet utracić część nagrody, ale jeżeli 
+skumulowana wartość rośnie, oznacza to, że agent zwiększa wiedzę na temat 
+środowiska w jakim operuje.
+
+\subsection{Przestrzenie akcji}
+
+Różne algorytmy wymagają innych typów akcji. Wiele gier wirtualnych jak Atari 
+czy Go ma wielowymiarowe przestrzenie akcji, które są \textbf{dyskretne}. 
+Oznacza to, że liczba możliwych akcji, które agent może wykonać jest skończona. 
+Przykładowo dla robota mobilnego takimi akcjami są: włącz silnik, wyłącz 
+silnik, obróć się w lewo i obróć się w prawo. Niestety takie akcje dla wielu 
+problemów nie mają zastosowania w praktyce. Dlatego kolejnym typem jest 
+\textbf{przestrzeń ciągłych akcji}. Często te przestrzenie opisuje się wektorem 
+liczb rzeczywistych. Przykładowo dla robota mobilnego taką akcją może być 
+liczba rzeczywista z przedziału od 0 do 1, która opisuje wartość sterowania 
+silnikiem, która przenosi się na wartość napięcia na silniku prądu stałego dla 
+wartości od 0 wolt to 12 wolt.
+ 
 ---------------
 
 To zawrzeć dalej $\dots$
