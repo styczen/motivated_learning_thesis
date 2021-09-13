@@ -76,6 +76,14 @@ mechanizm został przedstawiony na rysunku \ref{fig:rlschematagentsrodowisko}.
 	\label{fig:rlschematagentsrodowisko}
 \end{figure}
 
+Oznaczenia jakie się przyjmuje w literaturze:
+
+\begin{itemize}
+	\item $a_{t}$ -- akcja w chwili czasu $t$,
+	\item $s_{t}$ -- stan (a dokładniej obserwacja) po wykonaniu akcji,
+	\item $r_{t}$ -- nagroda, jaką agent otrzymał dla wykonanej akcji.
+\end{itemize}
+
 Głównym celem każdego algorytmu uczenia ze wzmocnieniem jest maksymalizacja 
 skumulowanej nagrody. W trakcie nauki, agent może otrzymywać czasem wysokie 
 nagrody w danej epoce, a czasem nawet utracić część nagrody, ale jeżeli 
@@ -95,33 +103,79 @@ liczb rzeczywistych. Przykładowo dla robota mobilnego taką akcją może być
 liczba rzeczywista z przedziału od 0 do 1, która opisuje wartość sterowania 
 silnikiem, która przenosi się na wartość napięcia na silniku prądu stałego dla 
 wartości od 0 wolt to 12 wolt.
+
+\subsection{Polityki}
+
+Każdy agent algorytmów uczenia ze wzmocnieniem podejmuje decyzję aby 
+zmaksymalizować skumulowaną nagrodę. Jednak potrzebne są pewne reguły, jakimi 
+taki agent będzie się kierował w trakcie eksploracji środowiska. Tak określana 
+jest \textbf{polityka}, z którą agent podejmuje decyzje. W nomenklaturze 
+oznacza się tą politykę grecką literą $\mu$. Polityki dzieli się na 
+deterministyczne \ref{eq:deterministic_policy}:
+
+\begin{equation}
+	\label{eq:deterministic_policy}
+	a_{t}=\mu(s_{t})
+\end{equation}
+
+Oznacza to, że akcja jaką wykona agent jest determinowana przez politykę tylko 
+na podstawie aktualnego stanu środowiska, z którym agent wchodzi w interakcję.
+
+Polityki mogą być także stochastyczne, czyli takie dla którym nie ma na sztywno 
+zdefiniowanych akcji, dla konkretnych stanów środowiska. Akcja jest wybierana z 
+pewnego rozkładu, na którym polityka (czyli agent podejmujący decyzję), zgodnie 
+z równaniem \ref{eq:stochastic_policy}:
+
+\begin{equation}
+	\label{eq:stochastic_policy}
+	a_{t}\sim\pi(\cdot|s_{t})
+\end{equation}
  
----------------
+Bardzo ważną dziedziną, która od momentu rozwoju wydajności sprzętu, jest 
+głębokie uczenie ze wzmocnieniem \textit{deep reinforcement learning}. Jak 
+nazwa sugeruje, w głębokim uczeniu ze wzmocnieniem korzysta się z sieci 
+neuronowych, a wartości jej parametrów są optymalizowane korzystając z 
+algorytmu optymalizacji. Dla sieci neuronowych najczęściej jest to algorytm 
+gradientu najszybszego spadku. Dla rozwiązywania problemów głębokiego uczenia 
+ze wzmocnieniem stosuje się sparametryzowane polityki, w których parametry 
+oznacza się literą $\theta$. W literaturze często określa się równanie polityki 
+jako \ref{eq:deep_rl}:
 
-To zawrzeć dalej $\dots$
+\begin{equation}
+	\begin{aligned}
+		\label{eq:deep_rl}
+		a_t&=\mu_\theta(s_t)\\
+		a_t&\sim\pi_\theta(\cdot|s_t)
+	\end{aligned}
+\end{equation}
+ 
+\subsection{Trajektorie}
+  
+Kolejnym elementem uczenia ze wzmocnieniem są tzw. \textit{trajektorie}. 
+Przyjmuje się, że jest to sekwencja stanów (używane zamiennie z obserwacjami) i 
+akcji oznaczaną:
 
-agent
+\begin{equation}
+	\tau=(s_0, a_0, s_1, a_1,\dots)
+\end{equation}
 
-środowisko
+Przejścia między stanami, określane jako tranzycje, w chwili czasu $t$ oraz 
+chwilą $t+1$, są tylko zależne od reguł danego środowiska oraz akcji, która 
+została wykonana w chwili czasu $t$. Tak jak i z politykami mogą być one 
+deterministyczne:
 
-nagroda
+\begin{equation}
+	s_{t+1}=f(s_t, a_t)
+\end{equation}
 
-stany (dyskretne, ciągłe)
+lub stochastyczne:
 
-polityki
+\begin{equation}
+	s_{t+1}=P(\cdot|s_t, a_t)
+\end{equation}
 
-funkcje kosztu (value functions)
+Akcja $a_t$ jest wybierana zgodnie z polityką zastosowaną w danym algorytmie 
+uczenia ze wzmocnieniem. Zwykle trajektoriami nazywa się \textbf{epizody}.
 
-deep rl
-
-równania bellmana
-
-Markov Decision Process
-
-model free vs model based RL
-
-
-
-krótki opis konkretnych algorytmów:
 
 
