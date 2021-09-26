@@ -177,5 +177,72 @@ lub stochastyczne:
 Akcja $a_t$ jest wybierana zgodnie z polityką zastosowaną w danym algorytmie 
 uczenia ze wzmocnieniem. Zwykle trajektoriami nazywa się \textbf{epizody}.
 
+\subsection{Nagroda i zwrot}
+
+Jednym z najważniejszych elementów uczenia ze wzmocnieniem jest funkcja nagrody 
+\textit{R}. Zawsze zależy ona od 3 części, które składają się na opis całego 
+środowiska do eksperymentu: aktualny stan świata (symulacji), aktualnej akcji 
+jaka została wykonana na danym świecie oraz stanu środowiska po wykonaniu tej 
+akcji. Opisuję się tą zależność zgodnie z równaniem \ref{eq:rl_reward}:
+
+\begin{equation}
+	r_t=R(s_t, a_t, s_{t+1})
+\end{equation}
+
+Celem jakiegokolwiek agenta jest maksymalizacja w pewien sposób określonej 
+kumulatywnej nagrody po całej trajektorii. Taką nagrodę określa się poprzez 
+$R(\tau)$. 
+
+Jednym typem nagrody jest \textbf{nieprzeceniony zwrot o horyzoncie czasowym 
+skończonym} (ang. \textit{finite -- horizon undiscounted reward}) określana 
+przez \ref{eq:finite_horizon_undiscount_reward}:
+
+\begin{equation}
+	R(\tau)=\sum_{t=0}^{T} r_t
+	\label{eq:finite_horizon_undiscount_reward}
+\end{equation}	
+
+Innym typem obliczanie skumulowanej nagrody jest zwrot z przeceną o 
+nieskończonym horyzoncie czasowym (ang. \textit{infinite -- horizon discounted 
+return}). Ta suma różni się od poprzedniej tym, że każda kolejna nagroda w 
+przyszłości jest mnożona przez współczynnik zmniejszający się im dalej w 
+przyszłości dana nagroda jest przyznawana. Współczynnik ten oznaczany jest 
+przez $\gamma\in(0, 1)$. Równanie opisujące tą nagrodę 
+\ref{eq:infinite_horizon_discount_reward}:
+
+\begin{equation}
+	R(\tau)=\sum_{t=0}^{\inf} \gamma^tr_t
+	\label{eq:infinite_horizon_discount_reward}
+\end{equation}	
+
+Dlaczego stosowany jest głównie wzór \ref{eq:infinite_horizon_discount_reward}. 
+Wynika to głównie ze stabilności i zbieżności takiej sumy do jakiejś wartości 
+gdy czas zbiega to nieskończoności. Istotne jest to z powodu prostszego 
+stosowania takiej sumy we wszelkich równaniach. Z kolei intuicyjnie odnosząc to 
+równanie do dnia codziennego. Lepiej mieć teraz pieniądze niż jutro. Można 
+dyskutować czy takie podejście do pieniędzy jest rozsądne (przykład: 
+inwestowanie czy odkładanie pieniędzy na lokacie, które po wielu latach mają 
+dają zwrot).
+
+\subsection{Funkcje wartości}
+
+W większości algorytmów uczenia za wzmocnieniem potrzebna jest informacja na 
+temat \textbf{wartości} stanu lub pary stan -- akcja. Wartością określa się 
+\textbf{oczekiwany zwrot} (ang. \textit{expected return}), która określa, że 
+zaczynając ze stanu początkowego $s_0$ jakiej nagrody może oczekiwać agent 
+zaczynając właśnie z tego stanu początkowego. Dlatego funkcje wartości w 
+różnych formach są stosowane w wielu algorytmach uczenia ze wzmocnieniem, 
+ponieważ umożliwiają określać czy dany stan będzie maksymalizował skumulowaną 
+nagrodę, a tym samym poprawiał skuteczność agenta w danym problemie.
+
+Funkcje wartości dzieli się na cztery główne typy:
+
+\begin{enumerate}
+	\item on -- policy value function,
+	\item on -- policy action -- value function,
+	\item optimal value function,
+	\item optimal action -- value function. 
+\end{enumerate}
+
 
 
