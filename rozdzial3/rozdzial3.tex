@@ -211,7 +211,7 @@ przez $\gamma\in(0, 1)$. Równanie opisujące tą nagrodę
 \ref{eq:infinite_horizon_discount_reward}:
 
 \begin{equation}
-	R(\tau)=\sum_{t=0}^{\inf} \gamma^tr_t
+	R(\tau)=\sum_{t=0}^{\infty} \gamma^tr_t
 	\label{eq:infinite_horizon_discount_reward}
 \end{equation}	
 
@@ -221,28 +221,20 @@ gdy czas zbiega to nieskończoności. Istotne jest to z powodu prostszego
 stosowania takiej sumy we wszelkich równaniach. Z kolei intuicyjnie odnosząc to 
 równanie do dnia codziennego. Lepiej mieć teraz pieniądze niż jutro. Można 
 dyskutować czy takie podejście do pieniędzy jest rozsądne (przykład: 
-inwestowanie czy odkładanie pieniędzy na lokacie, które po wielu latach mają 
+inwestowanie czy odkładanie pieniędzy na lokacie, które dopiero po wielu latach 
 dają zwrot).
 
-\subsection{Funkcje wartości}
+\section{Podstawowe algorytmy uczenia ze wzmocnieniem}
 
-W większości algorytmów uczenia za wzmocnieniem potrzebna jest informacja na 
-temat \textbf{wartości} stanu lub pary stan -- akcja. Wartością określa się 
-\textbf{oczekiwany zwrot} (ang. \textit{expected return}), która określa, że 
-zaczynając ze stanu początkowego $s_0$ jakiej nagrody może oczekiwać agent 
-zaczynając właśnie z tego stanu początkowego. Dlatego funkcje wartości w 
-różnych formach są stosowane w wielu algorytmach uczenia ze wzmocnieniem, 
-ponieważ umożliwiają określać czy dany stan będzie maksymalizował skumulowaną 
-nagrodę, a tym samym poprawiał skuteczność agenta w danym problemie.
+Powstało wiele algorytmów uczenia ze wzmocnieniem na przełomie ostatnich lat. 
+Nie jest łatwe spójna kategoryzacja wszystkich algorytmów, ale badacze starami 
+się stworzyć pewnego rodzaju. Na rysunku \ref{fig:rl_algorithms} zamieszczono 
+podział najpopularniejszych algorytmów. Część z nich zostanie omówiona, aby 
+pokazać czym się one charakteryzują.
 
-Funkcje wartości dzieli się na cztery główne typy:
 
-\begin{enumerate}
-	\item on -- policy value function,
-	\item on -- policy action -- value function,
-	\item optimal value function,
-	\item optimal action -- value function. 
-\end{enumerate}
+% TODO: add RL algorithms tree from 
+%https://spinningup.openai.com/en/latest/spinningup/rl_intro2.html
 
 
 
